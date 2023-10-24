@@ -6,6 +6,7 @@ services:
 - type: web
   name: lago-api
   runtime: docker
+  dockerfilePath: ./api/Dockerfile
   envVars:
     - key: POSTGRES_DB
       value: lago
