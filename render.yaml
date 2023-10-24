@@ -1,0 +1,35 @@
+
+# Render.yaml Configuration
+
+# API Service
+services:
+- type: web
+  name: lago-api
+  env: docker
+  dockerfilePath: ./Dockerfile  # Replace with the path to your API's Dockerfile if it's not at the root
+  envVars:
+    - key: POSTGRES_DB
+      value: lago
+    - key: POSTGRES_USER
+      value: lago
+    - key: POSTGRES_PASSWORD
+      value: changeme
+    - key: POSTGRES_PORT
+      value: 5432
+    - key: REDIS_PORT
+      value: 6379
+
+# PostgreSQL Database
+databases:
+- name: lago-postgres
+  type: postgres
+  version: 14.0
+
+# Redis Service
+- type: pserv
+  name: lago-redis
+  env: docker
+  dockerfilePath: ./RedisDockerfile  # Replace with the path to your Redis's Dockerfile if different
+  envVars:
+    - key: REDIS_PORT
+      value: 6379
